@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .success-header {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .confirmation-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: -50px;
+            position: relative;
+            z-index: 1;
+        }
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #28a745;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto;
+            position: relative;
+            top: -40px;
+        }
+        .product-image {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .info-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+            height: 100%;
+        }
+        .action-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #e9ecef;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #28a745;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px #28a745;
+        }
+        .timeline-item.future .timeline-dot {
+            background: white;
+            box-shadow: 0 0 0 2px #dee2e6;
+        }
+        .celebrate {
+            animation: celebrate 2s ease infinite;
+        }
+        @keyframes celebrate {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        @media (max-width: 768px) {
+            .success-header {
+                padding: 30px 0;
+            }
+            .success-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+                top: -30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Success Header -->
+    <header class="success-header">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Order Placed Successfully!</h1>
+            <p class="lead">Thank you for your purchase. Your order is being processed.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mb-5">
+        <!-- Confirmation Card -->
+        <div class="confirmation-card">
+            <div class="success-icon celebrate">
+                <i class="bi bi-check-lg"></i>
+            </div>
+            
+            <div class="p-4 p-md-5">
+                <div class="text-center mb-5">
+                    <h2 class="mb-2">Thank You, John!</h2>
+                    <p class="text-muted">Your order <strong>#ORD-32458</strong> has been confirmed</p>
+                </div>
+                
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="info-card">
+                            <h5 class="mb-4"><i class="bi bi-receipt"></i> Order Summary</h5>
+                            
+                            <!-- Product 1 -->
+                            <div class="row align-items-center mb-3">
+                                <div class="col-3">
+                                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="product-image" alt="Wireless Headphones">
+                                </div>
+                                <div class="col-9">
+                                    <h6 class="mb-1">Wireless Headphones</h6>
+                                    <p class="mb-1 text-muted">Qty: 1</p>
+                                    <p class="mb-0 fw-bold">$199.99</p>
+                                </div>
+                            </div>
+                            
+                            <hr>
+                            
+                            <!-- Order Summary -->
+                            <div class="row mt-3">
+                                <div class="col-6">
+                                    <p class="mb-1">Subtotal</p>
+                                    <p class="mb-1">Shipping</p>
+                                    <p class="mb-1">Tax</p>
+                                    <p class="mb-0 fw-bold">Total</p>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <p class="mb-1">$199.99</p>
+                                    <p class="mb-1">$9.99</p>
+                                    <p class="mb-1">$16.00</p>
+                                    <p class="mb-0 fw-bold">$225.98</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="info-card">
+                            <h5 class="mb-4"><i class="bi bi-truck"></i> Delivery Information</h5>
+                            
+                            <p class="mb-1"><strong>Estimated Delivery</strong></p>
+                            <p class="mb-3">Tuesday, June 20, 2023</p>
+                            
+                            <p class="mb-1"><strong>Shipping Address</strong></p>
+                            <p class="mb-3">
+                                John Doe<br>
+                                123 Main Street, Apt 4B<br>
+                                New York, NY 10001<br>
+                                United States
+                            </p>
+                            
+                            <p class="mb-1"><strong>Contact</strong></p>
+                            <p class="mb-0">john.doe@example.com • (555) 123-4567</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Next Steps -->
+                <div class="info-card">
+                    <h5 class="mb-4"><i class="bi bi-list-check"></i> What Happens Next?</h5>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h6 class="mb-1">Order Confirmed</h6>
+                                <p class="mb-0 text-muted">We've received your order and payment</p>
+                                <small class="text-muted">Today, 2:30 PM</small>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item future">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h6 class="mb-1">Order Processing</h6>
+                                <p class="mb-0 text-muted">We're preparing your items for shipment</p>
+                                <small class="text-muted">Expected: Within 24 hours</small>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item future">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h6 class="mb-1">Shipped</h6>
+                                <p class="mb-0 text-muted">Your order is on the way</p>
+                                <small class="text-muted">Expected: June 18, 2023</small>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item future">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h6 class="mb-1">Out for Delivery</h6>
+                                <p class="mb-0 text-muted">Your order will arrive today</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item future">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h6 class="mb-1">Delivered</h6>
+                                <p class="mb-0 text-muted">Your order has been delivered</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="text-center mt-4">
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <button class="btn btn-primary action-btn">
+                            <i class="bi bi-eye"></i> View Order Details
+                        </button>
+                        <button class="btn btn-outline-primary action-btn">
+                            <i class="bi bi-printer"></i> Print Receipt
+                        </button>
+                        <button class="btn btn-outline-primary action-btn">
+                            <i class="bi bi-shop"></i> Continue Shopping
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Support Info -->
+                <div class="text-center mt-5">
+                    <p class="text-muted">Need help with your order? <a href="#">Contact Support</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Confetti effect simulation
+            const celebrate = () => {
+                const successIcon = document.querySelector('.success-icon');
+                successIcon.classList.add('celebrate');
+                
+                // Simulate confetti effect with emojis
+                const confettiEmojis = ['🎉', '✨', '✅', '🎊', '👍'];
+                const container = document.querySelector('.success-header');
+                
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        const confetti = document.createElement('div');
+                        confetti.textContent = confettiEmojis[Math.floor(Math.random() * confettiEmojis.length)];
+                        confetti.style.position = 'absolute';
+                        confetti.style.fontSize = '24px';
+                        confetti.style.top = '50%';
+                        confetti.style.left = Math.random() * 100 + '%';
+                        confetti.style.opacity = '0';
+                        confetti.style.animation = `confettiFall ${1 + Math.random() * 2}s ease-in forwards`;
+                        container.style.position = 'relative';
+                        container.appendChild(confetti);
+                        
+                        // Remove after animation
+                        setTimeout(() => {
+                            confetti.remove();
+                        }, 3000);
+                    }, i * 100);
+                }
+                
+                // Add CSS for confetti animation
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes confettiFall {
+                        0% {
+                            transform: translateY(-50%) rotate(0deg);
+                            opacity: 1;
+                        }
+                        100% {
+                            transform: translateY(calc(100vh - 100px)) rotate(360deg);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            };
+            
+            // Run celebration on page load
+            celebrate();
+            
+            // Simulate loading order details
+            setTimeout(function() {
+                console.log("Order confirmation loaded successfully");
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

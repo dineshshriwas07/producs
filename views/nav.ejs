@@ -1,0 +1,147 @@
+<div class="nav-box">
+  <div class="container">
+    <div class="nav-inner d-flex align-items-center justify-content-between">
+
+      <!-- Logo -->
+      <figure class="logo-bx mb-0">
+        <a href="/">
+          <img src="/img/logo.png" height="65px" alt="olilly bilaspur chhattisgrah">
+        </a>
+      </figure>
+
+      <!-- Sidebar Menu -->
+      <nav class="sidebar">
+
+        <% if (session && session.user) { %>
+        <!-- Jab login hai -->
+        <div class="dropdown d-md-none mt-3 fw-medium">
+            <a class="btn btn-outline-light dropdown-toggle d-flex align-items-center gap-2 w-100" 
+            href="#" id="userDropdownMobile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/img/profile.png" 
+                class="rounded-circle" width="28" height="28" alt="User">
+            <span><%= session.user.name %></span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdownMobile">
+            <li><a class="dropdown-item" href="/user-dashboard">Your Order</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-danger" href="/logout">Logout</a></li>
+            </ul>
+        </div>
+        <% } else { %>
+        <!-- Jab login nahi hai -->
+        <div class="d-flex d-md-none gap-1 mt-3 fw-medium">
+            <span><a href="/customerSignup" class="text-decoration-none text-white">Signup</a></span>
+            <span class="fw-bold text-white">/</span>
+            <span><a href="/customerLogin" class="text-decoration-none text-white">Login</a></span>
+        </div>
+        <% } %>
+
+        <hr class="pro-border d-md-none">
+
+        <ul class="d-flex list-unstyled gap-4 fw-medium mb-0">
+          <li><a href="/" class="text-decoration-none text-white">Home</a></li>
+          <li><a href="/about" class="text-decoration-none text-white">About</a></li>
+          <li class="nav-item dropdown custom-dropdown">
+              <a href="#" class="nav-link dropdown-toggle text-white" id="serviceDropdown">Service</a>
+              <ul class="dropdown-menu custom-menu">
+                <li><a href="/coalwork" class="dropdown-item">Coal Work</a></li>
+                <li><a href="/iron-ore-work" class="dropdown-item">Iron Ore Work</a></li>
+                <li><a href="/mining-solutions" class="dropdown-item">Mining Solutions</a></li>
+                <li><a href="/transportation-work" class="dropdown-item">Transportation Work</a></li>
+              </ul>
+          </li>
+          <li><a href="/gallery" class="text-decoration-none text-white">Gallery</a></li>
+          <li><a href="/contact" class="text-decoration-none text-white">Contact Us</a></li>
+        </ul>
+      </nav>
+
+    <% if (session && session.user) { %>
+    <!-- Jab login hai -->
+    <ul class="nav-item dropdown profile-box list-unstyled mb-0">
+        <a class="nav-link dropdown-toggle d-flex align-items-center gap-2 text-white" href="#" 
+        id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+         <img src="/img/profile.png" 
+            class="rounded-circle" width="32" height="32" alt="User">
+        <%= session.user.name %>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" href="/user-dashboard">Your Order</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-danger" href="/logout">Logout</a></li>
+        </ul>
+    </ul>
+    <% } else { %>
+    <!-- Jab login nahi hai -->
+        <div class="profile-box d-none d-md-block">
+            <ul class="d-flex list-unstyled gap-1 fw-medium mb-0">
+                <li><a href="/customerSignup" class="text-decoration-none text-white">Signup</a></li>
+                <li class="fw-bold text-white">/</li>
+                <li><a href="/customerLogin" class="text-decoration-none text-white">Login</a></li>
+            </ul>
+        </div>
+    <% } %>
+
+      <!-- Mobile Nav Overlay + Toggle -->
+      <div class="overlay d-md-none"></div>
+      <div class="nav-toggle menu-bar text-white fs-4 d-md-none">
+        <span><i class="ri-menu-line"></i></span>
+      </div>
+
+    </div><!-- end nav-inner -->
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.querySelector('.overlay');
+  const navToggle = document.querySelector('.nav-toggle');
+  const body = document.body;
+
+  // navigation toggle
+  navToggle.addEventListener('click', () => {
+    sidebar.classList.add('active');
+    overlay.style.display = 'block';
+    body.classList.add('nav-open');
+  });
+
+  // close nav on click outside
+  overlay.addEventListener('click', closeNav);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+      closeNav();
+    }
+  });
+
+  function closeNav() {
+    sidebar.classList.remove('active');
+    overlay.style.display = 'none';
+    body.classList.remove('nav-open');
+  }
+
+  sidebar.addEventListener('wheel', (e) => {
+    e.stopPropagation();
+  });
+
+  // drop down for service page 
+  document.addEventListener("DOMContentLoaded", () => {
+    const serviceDropdown = document.getElementById("serviceDropdown");
+    const serviceMenu = serviceDropdown.nextElementSibling;
+
+    serviceDropdown.addEventListener("click", (e) => {
+      e.preventDefault();
+      serviceMenu.style.display = serviceMenu.style.display === "block" ? "none" : "block";
+    });
+
+    // close when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!serviceDropdown.parentElement.contains(e.target)) {
+        serviceMenu.style.display = "none";
+      }
+    });
+  });
+
+</script>

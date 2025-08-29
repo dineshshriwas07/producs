@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - E-commerce</title>
+
+    <!-- css file link  -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/media.css">
+
+    <!-- bootstrap cdn link  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- remix icon cdn  -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- font family use  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="active">
+            <div class="sidebar-header">
+                <h2 class="fs-5">Admin Panel</h2>
+            </div>
+
+            <ul class="dash-nav d-flex list-unstyled flex-column">
+
+                <li class="dash-nav-item  p-2">
+                    <a href="#" class="nav-link target" data-section="dashboradPage">
+                        <i class="ri-dashboard-2-line" ></i> Dashboard
+                    </a>
+                </li>
+                <li class="dash-nav-item p-2">
+                    <a href="#" class="nav-link" data-section="orders">
+                        <i class="ri-ticket-line"></i> Orders
+                    </a>
+                </li>
+                <li class="dash-nav-item p-2">
+                    <a href="#" class="nav-link" data-section="productsTableSection">
+                        <i class="ri-article-line"></i> Manage Products
+                    </a>
+                </li>
+                <li class="dash-nav-item p-2">
+                    <a href="/adminlogout" class="nav-link">
+                        <i class="ri-logout-box-r-line"></i>logout
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <section class="container-fluid section show" id="dashboradPage">
+                <div class="row mb-2">
+                    <div class="col-md-12 mt-3">
+                        <h2 class="fs-5">Dashboard</h2>
+                    </div>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="row">
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col me-2">
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            Total Orders</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><%= totalOrders %></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-shopping-cart fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col me-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Today Orders</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><%= todayOrders %></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="ri-calendar-2-line fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col me-2">
+                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Today Delivery
+                                        </div>
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <div class="h5 mb-0 me-3 font-weight-bold text-gray-800"><%= todayDelivered %></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-box-open fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col me-2">
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            TOtal Products</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><%= products.length %></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 mb-4">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Recent Orders</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Order #</th>
+                                                <th>Customer</th>
+                                                <th>Status</th>
+                                                <th>Amount</th>
+                                                <th>Quantity</th>
+                                                <th>Address</th>
+                                                <th>Ordered At</th>
+                                                <th>Delivered At</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% if (orders.length > 0) { %>
+                                                <% orders.forEach(order => { %>
+                                                    <tr>
+                                                        <td>ORD-<%= order.id %></td>
+                                                        <td><%= order.customerName %></td>
+                                                        <td>
+                                                            <% if (order.status === 'Delivered') { %>
+                                                                <span class="badge bg-success">Delivered</span>
+                                                            <% } else if (order.status === 'Processing') { %>
+                                                                <span class="badge bg-warning">Processing</span>
+                                                            <% } else if (order.status === 'Cancelled') { %>
+                                                                <span class="badge bg-danger">Cancelled</span>
+                                                            <% } else { %>
+                                                                <span class="badge bg-info"><%= order.status %></span>
+                                                            <% } %>
+                                                        </td>
+                                                        <td>₹<%= order.price %></td>
+                                                        <td><%= order.quantity %></td>
+                                                        <td><%= order.customerAddress %></td>
+                                                        <td><%= order.created_at ? order.created_at.toLocaleString() : '' %></td>
+                                                        <td><%= order.delivered_at ? order.delivered_at.toLocaleString() : '-' %></td>
+                                                    </tr>
+                                                <% }) %>
+                                            <% } else { %>
+                                                <tr>
+                                                    <td colspan="4" class="text-center">No recent orders</td>
+                                                </tr>
+                                            <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            
+            <!-- Orders Section -->
+            <section id="orders" class="section mt-5"> 
+                <div class="card shadow-sm">
+                    <div class="card-header bg-success text-white py-3">
+                        <h2 class="h5 mb-0">All Orders</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Customer</th>
+                                        <th>Email</th>
+                                        <th>Mobile</th>
+                                        <th>Product</th>
+                                        <th>Amount</th>
+                                        <th>Quantity</th>
+                                        <th>Ordered At</th>
+                                        <th>Delivered At</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if (orders && orders.length > 0) { %>
+                                        <% orders.forEach((order, index) => { %>
+                                            <tr>
+                                                <td><%= index + 1 %></td>
+                                                <td><%= order.customerName %></td>
+                                                <td><%= order.customerEmail %></td>
+                                                <td><%= order.customerMobile %></td>
+                                                <td><%= order.productName %></td>
+                                                <td>₹<%= order.price %></td>
+                                                <td><%= order.quantity %></td>
+                                                <td><%= order.created_at ? order.created_at.toLocaleString() : '' %></td>
+                                                <td><%= order.delivered_at ? order.delivered_at.toLocaleString() : '-' %></td>
+                                                <td>
+                                                    <% if(order.status === 'Delivered'){ %>
+                                                        <span class="badge bg-success">Delivered</span>
+                                                    <% } else { %>
+                                                        <span class="badge bg-warning text-dark"><%= order.status || 'Pending' %></span>
+                                                    <% } %>
+                                                </td>
+                                            </tr>
+                                        <% }) %>
+                                    <% } else { %>
+                                        <tr>
+                                            <td colspan="9" class="text-center">No orders found.</td>
+                                        </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- manage products -->
+            <section id="productsTableSection" class="section mt-3">
+                <div class="">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-primary text-white py-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h2 class="h5 mb-0">All Products</h2>
+                                <a href="/addproduct" class="btn btn-light btn-sm">
+                                    <i class="fas fa-plus me-1"></i> Add Product
+                                </a>
+                            </div>
+
+                        </div>
+                        
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover align-middle">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Index</th>
+                                                <th>Image</th>
+                                                <th>Title</th>
+                                                <th>Price</th>
+                                                <th>Original Price</th>
+                                                <th>Description</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <!-- Product 1 -->
+                                            <% products.forEach((item, index) => { %>
+                                                <tr>
+                                                    <td><%= index + 1 %></td>
+                                                    <!-- Product Image -->
+                                                    <td>
+                                                        <img src="/uploads/<%= item.ProImage %>" alt="<%= item.title %>" class="img-thumbnail" style="width:60px; height:50px;object-fit:cover;">
+                                                    </td>
+                                                    <!-- Product Details -->
+                                                    <td><%= item.title.slice(0,20) %>...</td>
+                                                    <td>₹<%= item.price %></td>
+                                                    <td>₹<%= item.originalPrice %></td>
+                                                    <td class="text-truncate" style="max-width: 200px;">
+                                                        <%= item.description.slice(0,20) %>...
+                                                    </td>
+
+                                                    <!-- Action Buttons -->
+                                                    <td>
+                                                        <a href="/editProduct/<%= item.id %>" class="btn btn-sm btn-outline-primary me-1" >
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+
+                                                        <a href="/deleteProduct/<%= item.id %>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this product?');">
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            <% }) %>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </section>
+            
+        </div><!--end-contents-->
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Only one page show at a time
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.section');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const targetId = link.getAttribute('data-section');
+                sections.forEach(sec => sec.classList.remove('show'));
+                document.getElementById(targetId)?.classList.add('show');
+            });
+        });
+
+        // Dashboard & Sidebar Script
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarCollapse = document.getElementById('sidebarCollapse');
+            const sidebar = document.getElementById('sidebar');
+
+            // Sidebar Toggle
+            sidebarCollapse?.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.matches('.dropdown-toggle')) {
+                    const dropdowns = document.getElementsByClassName('dropdown-menu');
+                    for (let i = 0; i < dropdowns.length; i++) {
+                        const openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            });
+
+            // Responsive adjustments
+            window.addEventListener('resize', function() {
+                if (window.innerWidth < 768) {
+                    sidebar?.classList.add('active');
+                } else {
+                    sidebar?.classList.remove('active');
+                }
+            });
+
+            // Initialize tooltips
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+
+</body>
+</html>

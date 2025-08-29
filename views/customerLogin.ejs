@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Login</title>
+
+    <!-- css file link  -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/media.css">
+
+    <!-- bootstrap cdn link  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- remix icon cdn  -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- font family use  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card login-card">
+                    <div class="card-body p-4">
+                        <div class="text-center mb-4">
+                            <i class="bi bi-person-circle" style="font-size: 3rem; color: #0d6efd;"></i>
+                            <h2 class="mt-3">Customer Login</h2>
+                            <p class="text-muted">Sign in to access your account</p>
+                        </div>
+                        
+                        <form id="loginForm" action="/user_login" method="post" class="needs-validation" novalidate>
+                           
+                            <% if (message) { %>
+                                <div class="alert alert-<%= alertType || 'info' %> text-center">
+                                <%= message %>
+                                </div>
+                            <% } %>
+                            <!-- Email/Phone Field -->
+                            <div class="mb-3">
+                                <label for="loginId" class="form-label">Email or Phone</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                    <input type="text" class="form-control" id="loginId" name="emailOrPhone" required>
+                                </div>
+                                <div class="invalid-feedback">Please enter your email or phone</div>
+                            </div>
+                            
+                            <!-- Password Field with Strength Meter -->
+                            <div class="mb-3 position-relative">
+                                <label for="loginPassword" class="form-label">Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                    <input type="password" class="form-control" name="password" id="loginPassword" 
+                                           minlength="8" required>
+                                    <span class="input-group-text password-toggle" id="toggleLoginPassword">
+                                        <i class="bi bi-eye-slash"></i>
+                                    </span>
+                                </div>
+                                <div class="password-strength mt-2" id="passwordStrength"></div>
+                                <div class="strength-text text-end" id="strengthText"></div>
+                                <div class="invalid-feedback" id="passwordFeedback">Password must be at least 8 characters</div>
+                            </div>
+                            
+                            <!-- Remember Me & Forgot Password -->
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#forgotModal">Forgot password?</a>
+                            </div>
+                            
+                            <!-- Login Button -->
+                            <button class="btn btn-primary w-100 py-2 login-btn mb-3" type="submit">
+                                <i class="bi bi-box-arrow-in-right me-2"></i>Login
+                            </button>
+                            
+                            <!-- Registration Link -->
+                            <div class="text-center">
+                                <p class="mb-0">Don't have an account? <a href="/customerSignup" class="text-decoration-none">Register</a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="mt-5 modal fade" id="forgotModal" tabindex="-1" aria-labelledby="forgotModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="checkMobileForm" method="post" action="/check-mob">
+                    <div class="modal-header">
+                        <h2 class="modal-title fs-5" id="forgotModalLabel">Enter Mobile Number or Email</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="identifierInput" name="identifier" placeholder="Enter your mobile number or email" required>
+                            <p id="mobileError" class="text-danger mt-2" style="display:none;"></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary w-100">Continue</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Password toggle functionality
+            const togglePassword = document.getElementById('toggleLoginPassword');
+            const password = document.getElementById('loginPassword');
+            
+            if (togglePassword && password) {
+                togglePassword.addEventListener('click', function() {
+                    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                    password.setAttribute('type', type);
+                    
+                    const icon = togglePassword.querySelector('i');
+                    icon.classList.toggle('bi-eye-slash');
+                    icon.classList.toggle('bi-eye');
+                    
+                    // Re-check strength when password is shown
+                    if (type === 'text') {
+                        checkPasswordStrength(password.value);
+                    }
+                });
+            }
+            
+            // Password strength checker
+            function checkPasswordStrength(password) {
+                const strengthBar = document.getElementById('passwordStrength');
+                const strengthText = document.getElementById('strengthText');
+                const feedback = document.getElementById('passwordFeedback');
+                
+                let strength = 0;
+                let messages = [];
+                
+                // Length check
+                if (password.length === 0) {
+                    strengthBar.style.width = '0%';
+                    strengthBar.className = 'password-strength';
+                    strengthText.textContent = '';
+                    return;
+                } else if (password.length < 8) {
+                    messages.push("Password must be at least 8 characters");
+                } else {
+                    strength += 30;
+                }
+                
+                // Character type checks
+                if (/[A-Z]/.test(password)) strength += 20;
+                if (/[0-9]/.test(password)) strength += 20;
+                if (/[^A-Za-z0-9]/.test(password)) strength += 20;
+                
+                // Special character check
+                if (!/[^A-Za-z0-9]/.test(password)) {
+                    messages.push("Add special characters for stronger password");
+                }
+                
+                // Determine strength level
+                let strengthClass, levelText;
+                if (strength < 30) {
+                    strengthClass = 'strength-weak';
+                    levelText = 'Weak';
+                    messages.push("Password is too weak");
+                } else if (strength < 70) {
+                    strengthClass = 'strength-medium';
+                    levelText = 'Medium';
+                    messages.push("Password could be stronger");
+                } else {
+                    strengthClass = 'strength-strong';
+                    levelText = 'Strong';
+                }
+                
+                // Update UI
+                strengthBar.style.width = strength + '%';
+                strengthBar.className = 'password-strength ' + strengthClass;
+                strengthText.textContent = levelText;
+                strengthText.className = 'strength-text text-end text-' + 
+                    (strengthClass === 'strength-weak' ? 'danger' : 
+                     strengthClass === 'strength-medium' ? 'warning' : 'success');
+                
+                // Set custom validation message
+                if (messages.length > 0 && password.length >= 8) {
+                    feedback.textContent = messages.join('. ') + '.';
+                } else {
+                    feedback.textContent = '';
+                }
+            }
+            
+            // Live password strength checking
+            password.addEventListener('input', function() {
+                checkPasswordStrength(this.value);
+            });
+            
+            // Form validation for email/phone
+            const loginId = document.getElementById('loginId');
+            if (loginId) {
+                loginId.addEventListener('input', function() {
+                    // Check if input is email or phone
+                    const value = this.value.trim();
+                    const isEmail = value.includes('@');
+                    const isPhone = /^[\d+]{10,15}$/.test(value);
+                    
+                    if (value.length > 0 && !isEmail && !isPhone) {
+                        this.setCustomValidity("Please enter a valid email or phone number");
+                    } else {
+                        this.setCustomValidity("");
+                    }
+                });
+            }
+            
+            // Form submission
+            const form = document.getElementById('loginForm');
+            if (form) {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    
+                    form.classList.add('was-validated');
+                    
+                    // If form is valid, you would typically submit to server here
+                    if (form.checkValidity()) {
+                        // Simulate login process
+                        console.log("Login submitted with:", {
+                            id: loginId.value,
+                            password: password.value
+                        });
+                        // window.location.href = "dashboard.html";
+                    }
+                }, false);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "express-tailwind-app",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch app.js",
+    "build:css": "postcss src/css/styles.css -o public/css/styles.css",
+    "watch:css": "postcss src/css/styles.css -o public/css/styles.css --watch"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "dotenv": "^17.2.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "multer": "^2.0.2",
+    "mysql": "^2.18.1",
+    "nodemon": "^3.1.10",
+    "razorpay": "^2.9.6"
+  }
+}

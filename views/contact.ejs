@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    
+    <!-- css file link  -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/media.css">
+
+    <!-- bootstrap cdn link  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- remix icon cdn  -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- font family use  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+<%- include('nav.ejs') %>
+<main>
+    <div class="container">
+        <div class="">
+            <h2 class="text-center mt-5">Contact US</h2>
+            <div class="col-lg-12">
+                <div class="contact-wrapper">
+                    <div class="row g-0">
+                        <div class="col-md-5">
+                            <div class="contact-visual">
+                                <h2 class="contact-heading">Let's Start a Conversation</h2>
+                                <p class="contact-subheading">We're here to help and answer any questions you might have. We look forward to hearing from you.</p>
+                                
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="bi bi-chat-dots"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        <h4>Quick Response</h4>
+                                        <p>We typically reply within a few hours</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="bi bi-headset"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        <h4>Expert Support</h4>
+                                        <p>Our team is here to help you</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="bi bi-shield-check"></i>
+                                    </div>
+                                    <div class="feature-text">
+                                        <h4>Secure Communication</h4>
+                                        <p>Your information is always safe with us</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="alternative-contact">
+                                <a href="https://wa.me/916263321067" class="whatsapp-btn" target="_blank">
+                                    <i class="bi bi-whatsapp whatsapp-icon"></i> Message us on WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-7">
+                            <div class="contact-form-section">
+                                <h3 class="form-title">Send us a message</h3>
+                                <p class="form-subtitle">Fill out the form below and we'll get back to you shortly</p>
+                                
+                                <form id="contactForm">
+                                    <div class="input-group-custom">
+                                        <i class="bi bi-person input-icon"></i>
+                                        <input type="text" class="form-input-custom" id="fullName" placeholder="Your full name" required>
+                                    </div>
+                                    
+                                    <div class="input-group-custom">
+                                        <i class="bi bi-envelope input-icon"></i>
+                                        <input type="email" class="form-input-custom" id="emailAddress" placeholder="Your email address" required>
+                                    </div>
+                                    
+                                    <div class="input-group-custom">
+                                        <i class="bi bi-telephone input-icon"></i>
+                                        <input type="tel" class="form-input-custom" id="phoneNumber" placeholder="Your phone number">
+                                    </div>
+                                    
+                                    <div class="input-group-custom">
+                                        <i class="bi bi-chat-text input-icon"></i>
+                                        <textarea class="form-input-custom" id="messageText" rows="3" placeholder="How can we help you?" required></textarea>
+                                    </div>
+                                    
+                                    <button type="submit" class="submit-btn-custom">
+                                        <i class="bi bi-send me-2"></i> Send Message
+                                    </button>
+                                </form>
+                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-2 map mb-5">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1848.6551942069132!2d82.19365197843717!3d22.075960196437716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a280bb9f84c5f6b%3A0x340b607ff87ed875!2sVineet%20fuels!5e0!3m2!1sen!2sin!4v1756144930514!5m2!1sen!2sin" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</main>
+<%- include('footer.ejs') %>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const fullName = document.getElementById('fullName').value;
+                const email = document.getElementById('emailAddress').value;
+                const phone = document.getElementById('phoneNumber').value;
+                const message = document.getElementById('messageText').value;
+                
+                // Format the message for WhatsApp
+                const whatsappMessage = `*Contact Form Submission*%0A%0A*Name:* ${fullName}%0A*Email:* ${email}%0A*Phone:* ${phone || 'Not provided'}%0A%0A*Message:*%0A${message}`;
+                
+                // Create WhatsApp URL
+                const whatsappURL = `https://wa.me/916263321067?text=${whatsappMessage}`;
+                
+                // Open WhatsApp in a new tab
+                window.open(whatsappURL, '_blank');
+                
+                // Show success message
+                alert('Thank you for your message! You are being redirected to WhatsApp.');
+                
+                // Reset the form
+                contactForm.reset();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Page</title>
+
+    <!-- css file link  -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/media.css">
+
+    <!-- bootstrap cdn link  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- remix icon cdn  -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- font family use  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+    </style>
+    
+</head>
+<body>
+
+<%- include('nav.ejs') %>
+<main>
+    <article>
+
+        <section class="gallery-header">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="display-5 fw-bold mb-4">Visual Gallery</h2>
+                        <p class="lead mb-4">Discover our curated collection of stunning imagery</p>
+                        
+                        <div class="search-container">
+                            <div class="search-box">
+                                <input type="text" class="search-input" placeholder="Search images...">
+                                <button class="search-btn">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <div class="container">
+                <div class="gallery-grid">
+                    <!-- Image 1 -->
+                    <div class="gallery-card">
+                        <figure>
+                            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="gallery-image" alt="Colorful books" style="height: 250px;">
+                        </figure>
+                        <div class="gallery-content">
+                            <p class="gallery-category">Art & Design</p>
+                            <h2 class="gallery-title">Awesome</h2>
+                            <p class="gallery-text">A vibrant collection of books arranged by color.</p>
+                            <button class="view-btn" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" data-title="Colorful Pages" data-description="A vibrant collection of books arranged by color.">View Details</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Image 2 -->
+                    <div class="gallery-card">
+                        <figure>
+                            <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="gallery-image" alt="Modern architecture" style="height: 320px;">
+                        </figure>
+                        <div class="gallery-content">
+                            <p class="gallery-category">Architecture</p>
+                            <h2 class="gallery-title">Modern Design</h2>
+                            <p class="gallery-text">Contemporary architecture with clean lines and geometric shapes.</p>
+                            <button class="view-btn" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" data-title="Modern Design" data-description="Contemporary architecture with clean lines and geometric shapes.">View Details</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Image 3 -->
+                    <div class="gallery-card">
+                        <figure>
+                            <img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="gallery-image" alt="Forest path" style="height: 280px;">
+                        </figure>
+                        <div class="gallery-content">
+                            <p class="gallery-category">Nature</p>
+                            <h2 class="gallery-title">Forest Pathway</h2>
+                            <p class="gallery-text">A serene path winding through a lush green forest.</p>
+                            <button class="view-btn" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" data-title="Forest Pathway" data-description="A serene path winding through a lush green forest.">View Details</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Image 4 -->
+                    <div class="gallery-card">
+                        <figure>
+                            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="gallery-image" alt="Fashion model" style="height: 380px;">
+                        </figure>
+                        <div class="gallery-content">
+                            <p class="gallery-category">Fashion</p>
+                            <h2 class="gallery-title">Urban Style</h2>
+                            <p class="gallery-text">Fashion portrait against an urban backdrop.</p>
+                            <button class="view-btn" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" data-title="Urban Style" data-description="Fashion portrait against an urban backdrop.">View Details</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Image 5 -->
+                    <div class="gallery-card">
+                        <figure>
+                            <img src="https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="gallery-image" alt="Mountain landscape" style="height: 260px;">
+                        </figure>
+                        <div class="gallery-content">
+                            <p class="gallery-category">Landscape</p>
+                            <h2 class="gallery-title">Mountain Horizon</h2>
+                            <p class="gallery-text">Majestic mountain range under a dramatic sky.</p>
+                            <button class="view-btn" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" data-title="Mountain Horizon" data-description="Majestic mountain range under a dramatic sky.">View Details</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Image 6 -->
+                    <div class="gallery-card">
+                        <figure>
+                            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="gallery-image" alt="Antique books" style="height: 300px;">
+                        </figure>
+                        <div class="gallery-content">
+                            <p class="gallery-category">Still Life</p>
+                            <h2 class="gallery-title">Vintage Collection</h2>
+                            <p class="gallery-text">Antique books and objects arranged artistically.</p>
+                            <button class="view-btn" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" data-title="Vintage Collection" data-description="Antique books and objects arranged artistically.">View Details</button>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+        </section>
+
+        <!-- Image Modal -->
+        <div class="modal fade gallery-modal" id="imageModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="modalImageTitle">Image Title</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="" class="modal-image img-fluid" alt="Modal image" id="modalImage">
+                        <p class="mt-3" id="modalImageDescription">Image description will appear here.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Download</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </article>
+</main>
+<%- include('footer.ejs') %>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Search functionality
+            const searchInput = document.querySelector('.search-input');
+            const galleryCards = document.querySelectorAll('.gallery-card');
+            
+            searchInput.addEventListener('keyup', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                galleryCards.forEach(card => {
+                    const title = card.querySelector('.gallery-title').textContent.toLowerCase();
+                    const description = card.querySelector('.gallery-text').textContent.toLowerCase();
+                    const category = card.querySelector('.gallery-category').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm) || category.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Modal functionality
+            const imageModal = document.getElementById('imageModal');
+            if (imageModal) {
+                imageModal.addEventListener('show.bs.modal', function(event) {
+                    const button = event.relatedTarget;
+                    const imageUrl = button.getAttribute('data-image');
+                    const imageTitle = button.getAttribute('data-title');
+                    const imageDescription = button.getAttribute('data-description');
+                    
+                    document.getElementById('modalImage').src = imageUrl;
+                    document.getElementById('modalImageTitle').textContent = imageTitle;
+                    document.getElementById('modalImageDescription').textContent = imageDescription;
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

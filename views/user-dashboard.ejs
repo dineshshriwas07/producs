@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Order Details</title>
+
+  <!-- css file link  -->
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/media.css">
+
+  <!-- bootstrap cdn link  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- remix icon cdn  -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- font family -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #eef2f7;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .order-card {
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .floating-support {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+<%- include('nav.ejs') %>
+<div class="container py-5 " >
+  <h2 class="mb-3 text-center fw-bold">My Orders</h2>
+
+  <% if (orders.length === 0) { %>
+    <div class="alert alert-info text-center">No orders found!</div>
+  <% } else { %>
+    <% orders.forEach(order => { %>
+      <div class="card order-card mb-4 shadow-sm">
+        <div class="order-header d-flex justify-content-between align-items-center p-3 border-bottom">
+          <h2 class="mb-0 fs-5"><i class="ri-takeaway-fill"></i> Delivery Code <%= order.delivery_code %></h2>
+            <% if (order.status === 'Processing') { %>
+              <span class="badge bg-warning text-dark">Processing</span>
+            <% } else if (order.status === 'Delivered') { %>
+              <span class="badge bg-success">Delivered</span>
+            <% } else if (order.status === 'Cancelled') { %>
+              <span class="badge bg-danger">Cancelled</span>
+            <% } else { %>
+              <span class="badge bg-secondary"><%= order.status %></span>
+            <% } %>
+        </div>
+        <div class="order-body p-3">
+          <p><strong>Order Date:</strong> 
+            <%= order.created_at ? new Date(order.created_at).toLocaleDateString("en-IN") : "N/A" %>
+          </p>
+          <p><strong>Customer:</strong> <%= order.customerName %></p>
+          <p><strong>Email:</strong> <%= order.customerEmail %></p>
+          <p><strong>Mobile:</strong> <%= order.customerMobile %></p>
+          <p><strong>Address:</strong> <%= order.customerAddress %></p>
+
+          <h6 class="fw-bold mt-4">Items</h6>
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <%= order.productName %> (x<%= order.quantity %>) 
+              <span class="fw-bold">₹<%= order.price %></span>
+            </li>
+          </ul>
+
+          <!-- Total Summary -->
+          <div class="d-flex justify-content-between border-top pt-3 fw-bold">
+            <span>Total Paid:</span>
+            <span>₹<%= order.totalAmount %></span>
+          </div>
+
+          <!-- Buttons -->
+          <div class="mt-3">
+
+                <% if (order.status === 'Completed' || order.status === 'Cancelled' || order.status === 'Delivered') { %>
+                  <button class="btn btn-outline-danger btn-sm" disabled>
+                    Cancel Not Allowed
+                  </button>
+                <% } else if (order.hours_passed <= 24) { %>
+                  <button class="btn btn-outline-danger btn-sm cancel-btn" data-id="<%= order.id %>">
+                    Cancel Order
+                  </button>
+                  <small class="text-muted d-block">* Cancellation allowed only within 24 hours</small>
+                <% } else { %>
+                  <button class="btn btn-outline-danger btn-sm" disabled>
+                    Cancel Not Allowed (Time Expired)
+                  </button>
+                <% } %>
+
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  <% } %>
+</div>
+
+
+<!-- Floating Customer Support Button -->
+<div class="floating-support">
+  <button class="btn btn-success" onclick="openSupport()">💬 Customer Support</button>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function openSupport() {
+    window.open("https://wa.me/916263321067?text=Hello%20Support,%20I%20need%20help%20with%20my%20order.", "_blank");
+  }
+
+  // Cancel Order Click
+  document.querySelectorAll(".cancel-btn").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      if(confirm("Are you sure you want to cancel this order?")) {
+        const orderId = btn.getAttribute("data-id");
+
+        try {
+          const res = await fetch(`/cancel-order/${orderId}`, { method: "POST" });
+          const data = await res.json();
+
+          if(data.success) {
+            alert("Order cancelled successfully!");
+            location.reload();
+          } else {
+            alert(data.message || "Error cancelling order");
+          }
+        } catch (err) {
+          console.error(err);
+          alert("Something went wrong!");
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>

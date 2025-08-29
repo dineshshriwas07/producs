@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+
+    <!-- css file link  -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/media.css">
+
+    <!-- bootstrap cdn link  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- remix icon cdn  -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- font family use  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <%- include('nav.ejs') %>
+    <main>
+        <article>
+            <!-- Mission Section -->
+            <section id="our-mission" class="section-about">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 mb-5 mb-lg-0">
+                            <h2 class="fw-bold mb-4">Our About</h2>
+                            <p class="mb-4 para">At <strong>OLILLY / Eco Motion Oils Pvt. Ltd.</strong>, we focus on delivering high-quality solutions for both automotive and industrial requirements. Our product range includes Battery Grade Distilled Water, <strong>Long Life Coolant</strong>, and <strong>Diesel Exhaust Fluid (DEF)</strong>, designed to enhance performance, reliability, and sustainability.</p>
+                            <p class="para">In addition to our products, we actively serve industries through <strong>Coal Work, Iron Ore Handling, Mining, and Transportation Services.</strong> With a strong infrastructure and dedicated workforce, we ensure safe, timely, and efficient operations that support large-scale industries such as steel plants, power plants, and manufacturing units.</p>
+                            <p class="para">By combining innovation with reliability, we provide not only premium products but also dependable logistics and industrial solutions. Our mission is to contribute to the growth of businesses by maintaining high standards of quality, safety, and customer satisfaction in every project we undertake.</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <figure>
+                                <img src="/img/Mining-risks.jpg" alt="Our team" class="img-fluid rounded-3">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="section-about bg-light">
+                <div class="container">
+                    <div class="row text-center">
+                        <div class="col-md-3 col-6">
+                            <p class="stat-number">12+</p>
+                            <p class="stat-label">Years Experience</p>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <p class="stat-number">500+</p>
+                            <p class="stat-label">Happy Clients</p>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <p class="stat-number">30+</p>
+                            <p class="stat-label">Countries Served</p>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <p class="stat-number">98%</p>
+                            <p class="stat-label">Customer Satisfaction</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Values Section -->
+            <section class="section-about">
+                <div class="container">
+                    <div class="row text-center mb-5">
+                        <div class="col-lg-8 mx-auto">
+                            <h2 class="fw-bold mb-4">Our Values</h2>
+                            <p class="lead">These principles guide everything we do</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="text-center">
+                                <div class="values-icon">
+                                    <i class="bi bi-heart"></i>
+                                </div>
+                                <h4 class="fw-bold mb-3">Quality</h4>
+                                <p>We never compromise on quality. Every product is crafted with attention to detail and built to last.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="text-center">
+                                <div class="values-icon">
+                                    <i class="bi bi-lightbulb"></i>
+                                </div>
+                                <h4 class="fw-bold mb-3">Innovation</h4>
+                                <p>We continuously explore new ideas and technologies to improve our products and services.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <div class="values-icon">
+                                    <i class="bi bi-people"></i>
+                                </div>
+                                <h4 class="fw-bold mb-3">Community</h4>
+                                <p>We believe in giving back and supporting the communities that have helped us grow.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Team Section -->
+            <section class="section-about bg-light">
+                <div class="container">
+                    <div class="row text-center mb-5">
+                        <div class="col-lg-8 mx-auto">
+                            <h2 class="fw-bold mb-4">Meet Our Team</h2>
+                            <p class="lead">The talented people behind our success</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="about-card">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Team member" class="team-img">
+                                <div class="p-4">
+                                    <h4 class="fw-bold mb-1">Sarah Johnson</h4>
+                                    <p class="text-primary mb-3">CEO & Founder</p>
+                                    <p class="mb-0">With over 15 years of industry experience, Sarah leads our company with vision and passion.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="about-card">
+                                <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Team member" class="team-img">
+                                <div class="p-4">
+                                    <h4 class="fw-bold mb-1">Michael Chen</h4>
+                                    <p class="text-primary mb-3">Lead Designer</p>
+                                    <p class="mb-0">Michael's creative vision shapes the look and feel of all our products.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="about-card">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Team member" class="team-img">
+                                <div class="p-4">
+                                    <h4 class="fw-bold mb-1">Emily Rodriguez</h4>
+                                    <p class="text-primary mb-3">Head of Engineering</p>
+                                    <p class="mb-0">Emily ensures our products meet the highest standards of performance and reliability.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section class="section-about bg-light">
+                <div class="container">
+                    <div class="row text-center mb-5">
+                        <div class="col-lg-8 mx-auto">
+                            <h2 class="fw-bold mb-4">What Our Customers Say</h2>
+                            <p class="lead">We're proud of the relationships we've built with our customers</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="testimonial-card">
+                                <figure>
+                                    <img src="/img/profile.jpg" alt="Customer" class="testimonial-img mx-auto d-block">
+                                </figure>
+                                <h5 class="fw-bold text-center mb-3">James Wilson</h5>
+                                <p class="text-center mb-0">"The quality of their products is exceptional. I've been a customer for years and have never been disappointed."</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="testimonial-card">
+                                <figure>
+                                    <img src="/img/profile.jpg" alt="Customer" class="testimonial-img mx-auto d-block">
+                                </figure>
+                                <h5 class="fw-bold text-center mb-3">Lisa Taylor</h5>
+                                <p class="text-center mb-0">"Their customer service is outstanding. They truly care about their customers and it shows in everything they do."</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="testimonial-card">
+                                <figure>
+                                    <img src="/img/profile.jpg" alt="Customer" class="testimonial-img mx-auto d-block">
+                                </figure>
+                                <h5 class="fw-bold text-center mb-3">Robert Martinez</h5>
+                                <p class="text-center mb-0">"Innovative products that actually deliver on their promises. I recommend them to all my colleagues."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </main>
+    <%- include('footer.ejs') %>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animation for stats counting
+            const statElements = document.querySelectorAll('.stat-number');
+            const statsSection = document.querySelector('.bg-light');
+            
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5
+            };
+            
+            const observer = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        statElements.forEach(stat => {
+                            const target = parseInt(stat.textContent);
+                            let count = 0;
+                            const duration = 2000; // 2 seconds
+                            const increment = target / (duration / 20);
+                            
+                            const updateCount = () => {
+                                if (count < target) {
+                                    count += increment;
+                                    stat.textContent = Math.round(count) + (stat.textContent.includes('%') ? '%' : '+');
+                                    setTimeout(updateCount, 20);
+                                } else {
+                                    stat.textContent = target + (stat.textContent.includes('%') ? '%' : '+');
+                                }
+                            };
+                            
+                            updateCount();
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+            
+            if (statsSection) {
+                observer.observe(statsSection);
+            }
+        });
+    </script>
+</body>
+</html>
